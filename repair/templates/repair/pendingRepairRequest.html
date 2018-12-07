@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Old Computer Depot</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	
+	{% load static %}
+	{% load staticfiles %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+	<link rel="icon" type="image/x-icon" href="{% static 'img/logo.png' %}">
+</head>
+style="background: {% static 'img/bg.png' %}; opacity: 0px;"
+<body>
+	<header>
+		<h2>Old Computer Depot</h2>
+	</header>
+		<section class="content" id='content' style="background: url({% static 'img/bg.png' %}) no-repeat center; background-size: contain;">
+			<section class="formContainer" style="margin-top: 100px;">
+				<form method="post" action="/repair/pendingRepairList/">
+					{% csrf_token %}
+					<br><br>
+					<h3 style="font-family: gotham rounded book;">Pending Repair</h3>
+					<br><br>
+					Date From<br>
+					<input type="date" placeholder="Enquiry Date" name="dateFrom" id="dateFrom" required><br><br><br>
+					Date To<br>
+					<input type="date" placeholder="Enquiry Date" name="dateTo" id="dateTo" required><br><br><br>
+					<a href="javascript:void()" onclick="setDate('{{ today }}','{{ today }}')">Today</a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="javascript:void()" onclick="setDate('{{ weekAgo }}','{{ today }}')">This Week</a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="javascript:void()" onclick="setDate('{{ monthAgo }}','{{ today }}')">This Month</a>
+					<br><br>
+					<input type="submit" value="Get List"><br><br>
+				</form>
+			</section>
+		</section>
+	<footer>
+		<p>Developed By : Jitendra Nirnejak (7869290297), Nishant Kumar Sahu (9407940408) and Aadarsh Gupta</p>
+	</footer>
+	<script type="text/javascript">
+		function setDate(dateFrom, dateTo){
+			document.getElementById("dateFrom").value = dateFrom;
+			document.getElementById("dateTo").value = dateTo;
+		}
+	</script>
+</body>
+
+</html>

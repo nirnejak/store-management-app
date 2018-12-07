@@ -1,0 +1,19 @@
+@font-face {
+	font-family: "gotham rounded bold";
+	src: url('../fonts/otf/GothamRoundedBold.otf') format("opentype");
+}
+
+@font-face {
+	font-family: "gotham rounded medium";
+	src: url('../fonts/otf/GothamRoundedMedium.otf') format("opentype");
+}
+
+@font-face {
+	font-family: "gotham rounded book";
+	src: url('../fonts/otf/GothamRoundedBook.otf') format("opentype");
+}
+
+@font-face {
+	font-family: "gotham rounded light";
+	src: url('../fonts/otf/GothamRoundedLight.otf') format("opentype");
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Old Computer Depot</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	
+	{% load static %}
+	{% load staticfiles %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/receipt.css' %}">
+
+	<link rel="icon" type="image/x-icon" href="{% static 'img/logo.png' %}">
+</head>
+
+<body>
+	<div class="content" style="background: white;">
+		<section class="table" id="receiptTable">
+			<section class="tableHeader">
+				<figure>
+					&nbsp;
+				</figure>
+				<section style="flex: 3;">
+					<br>
+					<h1 style="font-size: 31px;	">Old Computer Depot</h1>
+					<p>SALES - SERVICE - REPAIR - RENT - BYBACK</p>
+					<br>
+				</section>
+			</section>
+			<section class="tableContactDetails">
+				B-41, Dakshin Gangotri, Near Rly. Crossing, Supela, Bhilai, Ph. 0788 4060219
+			</section>
+			{% for i in customerDetails %}
+			<section style="display: flex; text-align: left; flex-wrap: wrap; padding:4px;">
+				<section style="min-width: 55%; max- width: 55%;"><b>R. No. : </b>{{ i.receiptID }}&nbsp;</u></section>
+				<section style="min-width: 45%; max- width: 45%;"><b>Date : </b>{{ i.enquiryDate }}</section>
+				<section style="min-width: 55%; max- width: 55%;"><b>Customer Name : </b>{{ i.customerName }}</section>
+				<section style="min-width: 45%; max- width: 45%;"><b>Contact No : </b>{{ i.contactNo }}</section>
+				{% for j in testDetails %}
+					<section style="min-width: 100%; max- width: 100%;"><b>Problem : </b>{{ j.actualProblem }}</section>
+					<section style="min-width: 100%; max- width: 100%;"><b>Problem Description : </b>{{ j.actualProblemDescription }}</section>
+				{% endfor %}
+				<section style="min-width: 100%; max- width: 100%;"><b>Device Condition : </b>{{ i.deviceCondition }}</section>
+			</section>
+			{% endfor %}
+
+			{% if componentsUsed %}
+				<section class="componentsTable">
+					<section class="componentsTableHeader">
+						<section style="min-width: 100%; max-width: 100%; font-size: 20px; padding: 3px;">Components Used</section>
+					</section>
+					<section class="componentsTableHeader">
+						<section style="flex:1;">S No.</section>
+						<section style="flex:2;">Items</section>
+						<section style="flex:1;">Price</section>
+					</section>
+					{% for i in componentsUsed %}
+					<section>
+						<section style="flex:1;">{{ forloop.counter }}</section>
+						{% for j in i %}
+							<section style="{% cycle 'flex:2;' 'flex:1;' %}">{{ j }}</section>
+						{% endfor %}
+					</section>
+					{% endfor %}
+					<section class="componentsTableFooter">
+						<section style="flex:3; text-align: right;">Total&nbsp;&nbsp;&nbsp;</section>
+						<section style="flex:1;">{{ componentsUsedPriceTotal }}</section>
+					</section>
+				</section>
+			{% endif %}
+			<!-- Final Bill -->
+			<section class="componentsTable">
+				<section class="componentsTableHeader">
+					<section style="min-width: 100%; max-width: 100%; font-size: 20px; padding: 3px;">Final Bill</section>
+				</section>
+				<section class="componentsTableHeader">
+					<section style="flex:1;">S No.</section>
+					<section style="flex:2;">Services</section>
+					<section style="flex:1;">Price</section>
+				</section>
+				<section>
+					<section style="flex:1;">1</section>
+					<section style="flex:2;">Components Used Charge</section>
+					<section style="flex:1;">{% if componentsUsedPriceTotal %} {{ componentsUsedPriceTotal }} {% else %} 0 {% endif %}</section>
+				</section>
+				<section>
+					<section style="flex:1;">2</section>
+					<section style="flex:2;">Repair Charge</section>
+					<section style="flex:1;">{% for i in repairDetails %}{{ i.repairCharge }}{% endfor %}</section>
+				</section>
+				<section>
+					<section style="flex:1;">3</section>
+					<section style="flex:2;">Other Charges</section>
+					<section style="flex:1;">{% for i in repairDetails %}{{ i.otherCharge }}{% endfor %}</section>
+				</section>
+				<section class="componentsTableFooter">
+					<section style="flex:3; text-align: right;">Total Repair Charge&nbsp;&nbsp;&nbsp;</section>
+					<section style="flex:1;">{% for i in repairDetails %}{{ i.totalPrice }}{% endfor %}</section>
+				</section>
+				<section class="componentsTableFooter">
+					<section style="flex:3; text-align: right;">Advance&nbsp;&nbsp;&nbsp;</section>
+					<section style="flex:1;">{% for i in customerDetails %}{{ i.advance }}{% endfor %}</section>
+				</section>
+				<section class="componentsTableFooter">
+					<section style="flex:3; text-align: right;">Balance&nbsp;&nbsp;&nbsp;</section>
+					<section style="flex:1;">{{ balance }}</section>
+				</section>
+			</section>
+
+			<section style="display: flex; text-align: center; flex-wrap: wrap; padding-bottom:0px; padding-top:50px; justify-content: flex-end;">
+				<section style="min-width: 55%; max- width: 55%;"><b>Customer Signature</b></section>
+				<section style="min-width: 45%; max- width: 45%;"><b>Old Computer Depot</b></section>
+			</section>
+		</section>
+	</div>
+</body>
+</html>

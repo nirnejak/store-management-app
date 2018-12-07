@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Old Computer Depot</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	
+	{% load static %}
+	{% load staticfiles %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+	<link rel="icon" type="image/x-icon" href="{% static 'img/logo.png' %}">
+</head>
+<body>
+	<header>
+		<h2>Old Computer Depot</h2>
+	</header>
+		<section class="content" id='content' style="background: url({% static 'img/bg.png' %}) no-repeat center; background-size: contain;">
+			<section class="formContainer">
+				<form method="post" action="/repair/enquiryReceipt/">
+					{% csrf_token %}
+					<br><br>
+					<h3 style="font-family: gotham rounded book;">Enquiry Form</h3>
+					<br><br>
+					<input type="text" value="Receipt ID : {{ receiptID }}" disabled="disabled" name="receiptID"><br><br>
+					<input type="date" placeholder="Enquiry Date" value="{{ currentDate }}" name="enquiryDate" required><br><br>
+					<input type="text" placeholder="Customer Name" name="customerName" required><br><br>
+					<input type="number" placeholder="Contact Number" min="0" name="contactNo" required><br><br>
+					<input type="email" placeholder="Email" name="email"><br><br>
+					<textarea placeholder="Address" rows="3" name="address"></textarea><br><br>
+					<br>
+					<center><hr size="2" width="85%" color="#2196f3" noshade></center>
+					<br>
+					<input type="text" placeholder="Device Type" name="deviceType" required><br><br>
+					<input type="text" placeholder="Brand" name="brand" required><br><br>
+					<input type="text" placeholder="Device Model" name="deviceModel" required><br><br>
+					<input type="text" placeholder="Device Serial Number" name="serialNo">
+					<br><br>
+					<textarea placeholder="Device Condition" rows="3" name="deviceCondition"></textarea><br><br>
+					<br>
+					<br>
+					<center><hr size="2" width="85%" color="#2196f3" noshade></center>
+					<br>
+					<!-- <input type="text" placeholder="Problem Category" name="problemCategory"><br><br> -->
+					<select name="problemCategory" required>
+						<option value="">Problem Category</option>
+						<option value="HW">Hardware</option>
+						<option value="SW">Software</option>
+					</select><br><br>
+					<input type="text" placeholder="Problem" name="problem" required><br><br>
+					<textarea placeholder="Problem Description" rows="3" name="problemDescription"></textarea><br><br>
+					<br>
+					<center><hr size="2" width="85%" color="#2196f3" noshade></center>
+					<br>
+					<input type="number" placeholder="Estimated Cost" min="0" name="estimatedCost" required><br><br>
+					<input type="number" placeholder="Advance" min="0" name="advance"><br><br><br>
+					<input type="submit" value="Print Receipt"><br><br>
+					<!-- onclick="window.location.reload()" -->
+				</form>
+			</section>
+		</section>
+	<footer>
+		<p>Developed By : Jitendra Nirnejak (7869290297), Nishant Kumar Sahu (9407940408) and Aadarsh Gupta</p>
+	</footer>
+</body>
+
+</html>

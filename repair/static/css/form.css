@@ -1,0 +1,111 @@
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="email"],
+input[type="date"],
+input[type="datetime-local"],
+textarea,
+select {
+	max-width: 70%;
+	min-width: 70%;
+	background: transparent;
+
+	font-family: var(--font-medium);
+	color: #2196F3;
+	font-size: 17px;
+
+	padding: 1% 1%;
+
+	border-color :#f4f4f4;
+	border-style: solid;
+	border-style: unset;
+	border-bottom: 2px rgba(150,150,150,1) solid;
+
+	outline: none;
+	appearance: none;
+	box-shadow: none;
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder,
+input[type="password"]::placeholder,
+input[type="search"]::placeholder,
+input[type="email"]::placeholder,
+input[type="date"]::placeholder,
+input[type="date-local"]::placeholder,
+textarea::placeholder
+select:placeholder {
+	color: rgba(150,150,150,1);
+	opacity: 1;
+}
+
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+button {
+	/* background: #2196F3; */
+	background: var(--gradient-background);
+
+	font-family: var(--font-medium);
+	color: #f4f4f4;
+	font-size: 13px;
+	letter-spacing: 0.5px;
+
+	border: solid 0px transparent;
+	border-radius: 0.2em;
+	padding: 2% 7%;
+
+	outline: none;
+	appearance: none;
+	box-shadow: none;
+	cursor: pointer;
+}
+
+input[type="button"]:focus,
+input[type="reset"]:focus,
+input[type="submit"]:focus,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover,
+button:focus,
+button:hover {
+	/*box-shadow: 0px 1px 15px 0px black;*/
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	transition: box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="datetime-local"]:focus,
+textarea:focus,
+select:focus {
+	color: #2196F3;
+	border-color: #2196F3;
+	
+	 /* border-image: var(--gradient-background);  */
+	
+	transition: 0.5s;
+	/* transform: scale(1.2); */
+}
+
+input[type="text"]:hover,
+input[type="number"]:hover,
+input[type="password"]:hover,
+input[type="search"]:hover,
+input[type="eamil"]:hover,
+input[type="date"]:hover,
+input[type="datetime-local"]:hover,
+textarea:hover,
+select:hover { 
+	/* border-color: ; */
+}
+
+textarea {
+	overflow: hidden;
+	resize: none;
+}

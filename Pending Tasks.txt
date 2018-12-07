@@ -1,0 +1,23 @@
+Models - checkingDetais(Model), repairDetails(Model)
+
+EnquiryReceipt - 
+	Disclaimer, 
+	Customer Signature(Alignment - Bottom Left), 
+	Old Computer Depot(Alignment - Bottom Right)
+	Condition Fetch from Database
+
+checkStatusRequest - 
+	Reduce Distance Between Cards
+
+checkStatusShow - 
+	Reduce Distance Between Cards
+	Add More Information
+	Fetch Data for checkingDetails
+	Fetch Data for repairDetails
+updateForm - 
+	Reduce Distance Between Cards
+	Bottom Cards in new Section with flex-direction : row
+pendingRequest - 
+	today, this week, this month (JavaScript)+(Button Style)
+pendingList -
+	Style

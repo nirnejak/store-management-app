@@ -1,0 +1,192 @@
+@import url('form.css');
+@import url('fonts.css');
+@import url('dashboard.css');
+
+:root {
+	--primary-color: #2196f3;
+	--gradient-background: linear-gradient(45deg,#2196f3,#683BB7);
+	/* --gradient-background: linear-gradient(45deg,deeppink,orangered); */
+
+	--font-light: "gotham rounded light";
+	--font-book: "gotham rounded book";
+	--font-medium: "gotham rounded medium";
+	--font-bold: "gotham rounded bold";
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	min-height: 100vh;
+	background: #F4F4F4;
+	/* background: #FAFAFA;*/
+	/* background: #FF4081; */
+
+	font-family: var(--font-medium);
+}
+
+header{
+	min-width: 100%;
+	max-width: 100%;
+	max-height: 70px;
+	min-height: 70px;
+
+	padding-top: 1%;
+	padding-bottom: 1%;
+
+	position: fixed;
+	z-index: 999;
+	top: 0px;
+	left: 0px;
+
+	display: flex;
+	justify-content: center;
+	align-self: center;
+	align-items: center;
+	text-align: center;
+
+	/* background: #2196f3; */
+	background: var(--gradient-background);
+	font-family: var(--font-book);
+	color: white;
+
+	box-shadow: 0px 3px 6px rgba(0,0,0,0.16), 0px 3px 6px rgba(0,0,0,0.23);
+}
+
+.content{
+	display: flex;
+	flex-wrap: wrap;
+
+	justify-content: space-around;
+
+	text-align: center;
+	align-self: center;
+	align-items: flex-start;
+
+	position: relative;
+
+	min-width: 100%;
+	max-width: 100%;
+	min-height: 100vh;
+	max-height: 100vh;
+	background: #F4F4F4;
+
+	text-align: center;
+}
+
+.login{
+	min-width: 30%;
+	max-width: 30%;
+	min-height: 222px;
+	max-height: 222px;
+	
+	background-color: white;
+
+	border-radius: 0.3em;
+
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+  	animation-duration: .75s;
+  	animation-name: bounceIn;
+  	transform-origin: center middle;
+}
+
+.login:hover {
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	transform: scale(1.1);
+}
+
+.formContainer{
+	min-width: 40%;
+	max-width: 40%;
+	
+	margin-top: 100px;
+	margin-bottom: 110px;
+	padding: 10px;
+
+	background-color: white;
+	
+	border-radius: 0.3em;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+  	animation-duration: .75s;
+  	animation-name: fadeInUp;
+  	transform-origin: center bottom;
+}
+
+.formContainer:hover {
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	/* transform: scale(1.02); */
+}
+
+@media only screen and (max-width: 800px){
+	.login {
+		top: none;
+		right: none;
+		min-width: 70%;
+		max-width: 70%;
+	}
+	.login:hover {
+		transform: none;
+	}
+	.formContainer{
+		min-width: 90%;
+		max-width: 90%;
+	}
+}
+.formContainer a {
+	text-decoration: none;
+
+	color: #2196f3;
+	border: 1.5px #2196f3 solid;
+
+	padding: 5px 9px 5px 9px;
+	border-radius: 0.2em;
+}
+
+.formContainer a:hover {
+	color:#683BB7;
+	border: 1.5px #683BB7 solid;
+}
+
+footer{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	
+	min-width: 100%;
+	max-width: 100%;
+
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	z-index: 999;
+
+	margin-top: 5%;
+	margin-bottom: 0px;
+	padding-top: 21px;
+	padding-bottom: 21px;
+
+	font-family: var(--font-book);
+
+	background: rgba(0,0,0,0.8);
+	color: white;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Old Computer Depot</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	
+	{% load static %}
+	{% load staticfiles %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<style type="text/css">
+		.contentLogin{
+			display: flex;
+			flex-wrap: wrap;
+
+			justify-content: space-around;
+
+			text-align: center;
+			align-self: center;
+			align-items: center;
+
+			position: relative;
+
+			min-width: 100%;
+			max-width: 100%;
+			min-height: 100vh;
+			max-height: 100vh;
+			background: #F4F4F4;
+
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<h2>Old Computer Depot</h2>
+	</header>
+
+	<section class="contentLogin" id='content'>
+		<section class="login">
+			<br><br><br>
+			<form method="POST" action="repair/">
+				{% csrf_token %}
+				<input type="text" placeholder="Username" autofocus="autofocus" name="username" required><br><br>
+				<input type="password" placeholder="Password" name="password" required><br><br>
+				<input type="submit" value="Login"><br><br>
+			<br><br><br>
+		</section>
+	</section>
+
+	<footer>
+		<p>Developed By : Jitendra Nirnejak (7869290297), Nishant Kumar Sahu (9407940408) and Aadarsh Gupta</p>
+	</footer>
+</body>
+
+</html>

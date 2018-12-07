@@ -1,0 +1,76 @@
+.contentColumn{
+	display: flex;
+	/* flex-wrap: wrap; */
+
+	flex-direction: column;
+	justify-content: flex-start;
+
+	text-align: center;
+	align-self: center;
+	align-items: center;
+
+	position: relative;
+
+	min-width: 100%;
+	max-width: 100%;
+	min-height: 100vh;
+	max-height: 100vh;
+	background: #F4F4F4;
+
+	text-align: center;
+}
+
+.details{
+	background: #E6E9EC;
+	border-radius: 0.4em;
+}
+
+.listContainer{
+	min-width: 60%;
+	max-width: 60%;
+	
+	margin-top: 755px;
+	margin-bottom: 110px;
+	padding: 10px;
+
+	background-color: white;
+	
+	border-radius: 0.3em;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+  	animation-duration: .75s;
+  	animation-name: fadeInUp;
+  	transform-origin: center bottom;
+}
+
+table {
+	text-align: center;
+	border-radius: 0.4em;
+	min-width: 93%;
+	max-width: 93%;
+
+	font-family: 'gotham rounded light';
+}
+
+table th {
+	background: rgba(225,225,225,1);
+	font-family: 'gotham rounded book';
+	padding: 5px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+table tr {
+	border-bottom: 1px lightgrey solid;
+	background: rgba(240,240,240,1);
+}
+table td {
+	padding: 5px;
+}
+
+table tr:hover {
+	background: rgba(235,235,235,1);
+	border-bottom: 0px lightgrey solid;
+	cursor: pointer;
+}

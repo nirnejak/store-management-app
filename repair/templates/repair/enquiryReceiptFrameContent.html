@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Old Computer Depot</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	
+	{% load static %}
+	{% load staticfiles %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/receipt.css' %}">
+
+	<link rel="icon" type="image/x-icon" href="{% static 'img/logo.png' %}">
+</head>
+
+<body>
+	<div class="content" style="background: white;">
+		{% for i in customerDetails%}
+		<section class="table">
+			<section class="tableHeader">
+				<figure>
+					&nbsp;
+				</figure>
+				<section style="flex: 3;">
+					<br>
+					<h1 style="font-size: 31px;	">Old Computer Depot</h1>
+					<p>SALES - SERVICE - REPAIR - RENT - BYBACK</p>
+					<br>
+				</section>
+			</section>
+			<section class="tableContactDetails">
+				B-41, Dakshin Gangotri, Near Rly. Crossing, Supela, Bhilai, Ph. 0788 4060219
+			</section>
+			<section style="display: flex; text-align: left; flex-wrap: wrap; padding:4px;">
+				<section style="min-width: 55%; max- width: 55%;"><b>R. No. : </b>{{ i.receiptID }}</u></section>
+				<section style="min-width: 45%; max- width: 45%;"><b>Date : </b>{{ i.enquiryDate }}</section>
+				<section style="min-width: 55%; max- width: 55%;"><b>Customer Name : </b>{{ i.customerName }}</section>
+				<section style="min-width: 45%; max- width: 45%;"><b>Contact No : </b>{{ i.contactNo }}</section>
+				<section style="min-width: 100%; max- width: 100%;"><b>Problem : </b>{{ i.problem }}</section>
+				<section style="min-width: 100%; max- width: 100%;"><b>Problem Description : </b>{{ i.problemDescription }}</section>
+				<section style="min-width: 100%; max- width: 100%;"><b>Device Condition : </b>{{ i.deviceCondition }}</section>
+			</section>
+			<section style="display: flex; text-align: left; flex-wrap: wrap; padding:4px;">
+				<section style="min-width: 55%; max- width: 55%;"><b>Estimated Cost : </b>{{ i.estimatedCost }}</section>
+				<section style="min-width: 45%; max- width: 45%;"><b>Advance : </b>{{ i.advance }}</section>								
+			</section>
+			<section class="tableContactDetails" style="text-align: left;">
+				<p><b>ध्यान दें :-</b></p>
+				<p>1. कृप्या इस रसीद को माल ले जाते वक्त साथ लावे|</p>
+				<p>2. 10 दिन के भीतर सामान ले जावे , अन्यथा हमारी जवाबदारी नहीं होगी।</p>
+				<p>3. अपने उपकरण को रिपेयर, सर्विस के लिए देते वक्त अपना डाटा सुरक्षित रखे, डाटा डिलीट होने पर हमारी जवाबदारी नहीं होगी।</p>
+				<p>4. रिपेयर होने के पश्यात आपके उपकरण में कोई और परेशानी आती है तो उसकी जवाबदारी हमारी नहीं होगी।</p>
+			</section>
+			<section style="display: flex; text-align: center; flex-wrap: wrap; padding-bottom:0px; padding-top:50px; justify-content: flex-end;">
+				<section style="min-width: 55%; max- width: 55%;"><b>Customer Signature</b></section>
+				<section style="min-width: 45%; max- width: 45%;"><b>Old Computer Depot</b></section>
+			</section>
+		</section>
+		{% endfor %}
+	</div>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Old Computer Depot</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	
+	{% load static %}
+	{% load staticfiles %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+	<link rel="icon" type="image/x-icon" href="{% static 'img/logo.png' %}">
+
+	<style type="text/css">
+		.contentColumn{
+			display: flex;
+			/* flex-wrap: wrap; */
+			
+			flex-direction: column;
+			justify-content: flex-start;
+
+			text-align: center;
+			align-self: center;
+			align-items: center;
+
+			position: relative;
+
+			min-width: 100%;
+			max-width: 100%;
+			min-height: 100vh;
+			max-height: 100vh;
+			background: #F4F4F4;
+
+			text-align: center;
+		}
+
+		.details{
+			background: #E6E9EC;
+			border-radius: 0.4em;
+		}
+
+		.listContainer{
+			min-width: 60%;
+			max-width: 60%;
+			
+			margin-top: 755px;
+			margin-bottom: 110px;
+			padding: 10px;
+
+			background-color: white;
+			
+			border-radius: 0.3em;
+			box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+		  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+		  	animation-duration: .75s;
+		  	animation-name: fadeInUp;
+		  	transform-origin: center bottom;
+		}
+
+		table {
+			text-align: center;
+			border-radius: 0.4em;
+			min-width: 93%;
+			max-width: 93%;
+
+			font-family: 'gotham rounded light';
+		}
+
+		table th {
+			background: rgba(225,225,225,1);
+			font-family: 'gotham rounded book';
+			padding: 5px;
+			padding-top: 7px;
+			padding-bottom: 7px;
+		}
+
+		table tr {
+			border-bottom: 1px lightgrey solid;
+			background: rgba(240,240,240,1);
+		}
+		table td {
+			padding: 5px;
+		}
+
+		table tr:hover {
+			background: rgba(235,235,235,1);
+			border-bottom: 0px lightgrey solid;
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<h2>Old Computer Depot</h2>
+	</header>
+
+	<section class="contentColumn" id='content' style="background: url({% static 'img/bg.png' %}) no-repeat center; background-size: contain;">
+		<section class="formContainer" style="margin-top: 100px; margin-bottom: 20px; font-family: gotham rounded book; max-width: 60%; min-width: 60%; padding: 2%;">
+			<h1>Update Details</h1>
+		</section>
+		<section class="formContainer" style="margin-top: 0px; margin-bottom: 20px; font-family: gotham rounded book; max-width: 60%; min-width: 60%; padding: 2%;">
+			<br>
+				{% for i in customerDetails %}
+				<section style="display: flex;">
+					<section style="max-width:20%; min-width: 20%; text-align: left;">
+						<p><b>Receipt ID :</b> <b>{{ i.receiptID }}</b></p>						
+					</section>
+					<section style="max-width:40%; min-width: 40%; text-align: left;">
+						<p><b>Status : </b>
+							{% ifequal "EN" i.status %}
+								<font color="red">Enquired</font>
+							{% endifequal %}
+							{% ifequal "CH" i.status %}
+								<font color="#FFCC00">Checked</font>
+							{% endifequal %}
+							{% ifequal "RE" i.status %}
+								<font color="Green">Repaired</font>
+							{% endifequal %}
+							{% ifequal "CO" i.status %}
+								<font color="blue">Completed</font>
+							{% endifequal %}
+						</p>
+
+						</b></p>						
+					</section>
+					<section style="max-width:40%; min-width: 40%; text-align: left;">					
+						<p><b>Enquiry Date : </b>{{ i.enquiryDate }}</p>					
+					</section>
+				</section>
+				<br>
+				<section style="display: flex; max-width: 100%; min-width: 100;">
+					<section style="max-width: 60%; min-width: 60%; text-align: left;">
+						<p style="font-size: 35px;"><b>{{ i.customerName }}</b></p>
+						<br>
+						<section style="min-width: 100%; max-width: 100%; display: flex; flex-direction: column;">
+							<section style="max-width: 100%; min-width: 100%; text-align: left;">
+								<p style="font-size: 20px;"><b>{{i.brand}}</b> {{i.deviceModel}}</p>
+							</section>
+							<section style="max-width: 100%; min-width: 100%; text-align: left;">
+								<p><b>Serial No. : </b>{{ i.serialNo }}</p>
+							</section>
+						</section>
+					</section>
+					<section style="max-width: 40%; min-width: 40%; display: flex; flex-direction: column; flex-wrap: wrap;">
+						<h4 style="text-align:left; margin-bottom: 5px;">Contact Details : </h4>
+						<section style="margin-left: 13px;">
+							<section style="max-width: 100%; min-width: 100%; text-align: left;">
+								<p style="font-size: 15px;">{{ i.contactNo }}</p>
+							</section>
+							<section style="max-width: 100%; min-width: 100%; text-align: left;">
+								<p style="font-size: 15px;">{{ i.email }}</p>
+							</section>
+							<section style="max-width: 100%; min-width: 100%; text-align: left;">
+								<p>{{ i.address }}</p>
+							</section>
+						</section>
+					</section>
+				</section>
+				<br>
+				<section style="min-width: 100%; max-width: 100%; display: flex;">
+					<section style="min-width: 60%; max-width: 60%; text-align: left;">
+						<p><b>Problem : </b>{{ i.problem }}</p>
+					</section>
+					<section style="min-width: 40%; max-width: 40%; text-align: left;">
+						<p><b>Problem Category : </b>
+							{% ifequal "HW" i.problemCategory %}
+								Hardware
+							{% endifequal %}
+							{% ifequal "SW" i.problemCategory %}
+								Software
+							{% endifequal %}
+						</p>
+					</section>
+				</section>
+				<br>
+				<section style="min-width: 100%; max-width: 100%; display: flex; text-align: left;">
+					<p><b>Problem Description : </b>{{ i.problemDescription }}</p>
+				</section>
+				<br>
+				<section style="min-width: 100%; max-width: 100%; display: flex; text-align: left;">
+					<p><b>Device Condition : </b>{{ i.deviceCondition }}</p>
+				</section>
+			    {% endfor %}
+			<br>
+		</section>
+		{% if testDetails %}
+			<section class="formContainer" style="margin-top: 0px; font-family: gotham rounded book; max-width: 60%; min-width: 60%; padding: 2%; margin-bottom: 25px;">
+				<section style="display: flex; max-width: 100%; min-width: 100;">
+					<section style="max-width: 100%; min-width: 100%; text-align: left;">
+						<p style="font-size: 35px;"><b>Actual Problem</b></p>
+						<br>
+							{% for i in testDetails%}
+								<p><b>Actual Problem :</b> {{ i.actualProblem }}</p>
+								<p><b>Actual Problem Description :</b> {{ i.actualProblemDescription }}</p>
+							{% endfor %}
+					</section>
+				</section>
+			</section>
+		{% else %}
+			<section class="formContainer" style="margin-top: 0px; margin-bottom: 50px; height: 100%;">
+				<form method="post" action="../updateTestDetails/">
+					{% csrf_token %}
+					<br><br>
+					<h3 style="font-family: gotham rounded book;">Actual Problem Description</h3>
+					<br><br>
+					{% for i in customerDetails %}
+					<input type="hidden" name="receiptID" value="{{ i.receiptID }}">
+					{% endfor %}
+					<input type="text" placeholder="Actual Problem" name="actualProblem" required><br><br>
+					<textarea placeholder="Actual Problem Description" rows="3" name="actualProblemDescription" value=""></textarea><br><br>
+					<input type="submit" value="Update Test Details"><br><br>
+				</form>
+			</section>
+		{% endif %}
+
+		<!-- Repair Details -->
+		{% if repairDetails %}
+			<section class="formContainer" style="margin-top: 0px; font-family: gotham rounded book; max-width: 60%; min-width: 60%; padding: 2%; margin-bottom: 100px;">
+				<section style="height: 100%; margin-left: 20px;">
+					<section style="width: 100%; height: 100%; text-align: left;">
+						<p style="font-family: gotham rounded book; font-size: 35px;"><b>Repair Description</b></p>
+					</section>
+				</section>
+				<br>
+					{% if componentsUsed %}
+						<center>
+							<table border="0" width="100%">
+								<tr>
+									<th colspan="6" style="background: white;"><h1>Components Used</h1><br></th>
+								</tr>
+								<tr>
+									<th style="border-top-left-radius: 0.4em;">Components</th>
+									<th style="border-top-right-radius: 0.4em;">Price</th>
+								</tr>
+								{% for component in componentsUsed %}
+									<tr class="list">
+										{% for j in component %}
+											<td>{{ j }}</td>
+										{% endfor %}
+									</tr>
+								{% endfor %}
+									<tr class="list">
+										<td><b>Total</b></td>
+										<td><b>{{ componentsUsedPriceTotal }}</b></td>
+									</tr>
+									<tr>
+										<td colspan="5" style="border-bottom-left-radius: 0.4em; border-bottom-right-radius: 0.4em;"><br></td>
+									</tr>
+							</table>
+							<br>
+						</center>
+					{% endif %}
+					<center>
+						<table border="0" width="100%">
+							<tr>
+								<th colspan="6" style="background: white;"><h1>Total Price</h1><br></th>
+							</tr>
+							<tr>
+								<th style="border-top-left-radius: 0.4em;">Services</th>
+								<th style="border-top-right-radius: 0.4em;">Price</th>
+							</tr>
+							<tr class="list">
+								<td>Components Used Charge</td>
+								<td>{% if componentsUsedPriceTotal %} {{ componentsUsedPriceTotal }} {% else %} 0 {% endif %}</td>
+							</tr>
+							<tr class="list">
+								<td>Repair Charge</td>
+								<td>{% for i in repairDetails %}{{ i.repairCharge }}{% endfor %}</td>
+							</tr>
+							<tr class="list">
+								<td>Other Charge</td>
+								<td>{% for i in repairDetails %}{{ i.otherCharge }}{% endfor %}</td>
+							</tr>
+							<tr class="list">
+								<td><b>Total Repair Charge</b></td>
+								<td><b>{% for i in repairDetails %}{{ i.totalPrice }}{% endfor %}</b></td>
+							</tr>
+							<tr class="list">
+								<td>Advance</td>
+								<td>{% for i in customerDetails %}{{ i.advance }}{% endfor %}</td>
+							</tr>
+							<tr class="list">
+								<td><b>Balance</b></td>
+								<td><b>{{ balance }}</b></td>
+							</tr>
+							<tr>
+								<td colspan="5" style="border-bottom-left-radius: 0.4em; border-bottom-right-radius: 0.4em;"><br></td>
+							</tr>
+						</table>
+						<br>
+					</center>
+					<input type="button" value="Generate Final Bill" onclick="window.location.replace('../finalReceipt?&receiptID={% for i in customerDetails %}{{ i.receiptID }}{% endfor %}')">
+				</section>
+			</section>
+		
+		{% else %}
+
+			<section style="display: flex; flex-direction: row; margin-top: 0px; flex-wrap: wrap; justify-content: space-around; max-width: 100%; min-width: 100%;">
+				<section class="formContainer" style="margin-top: 0px; height: 100%;">
+					<form method="post" action="../updateRepairDetails/">
+						{% csrf_token %}
+						<br><br>
+						<h3 style="font-family: gotham rounded book;">Add Components</h3>
+						<br><br>
+						{% for i in customerDetails %}
+						<input type="hidden" name="receiptID" value="{{ i.receiptID }}">
+						{% endfor %}
+						<input type="hidden" value="" name="componentsUsed" id="componentListStore">
+						<input type="text" placeholder="Component" id="component" name="component"><br><br>
+						<input type="number" placeholder="Price" id="price" name="price"><br><br>
+						
+						<input type="button" value="Reset" onclick="clearComponent();">&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="button" value="Add Component" onclick="addComponent();"><br><br>
+						<section id="componentList">
+							
+						</section>
+				</section>
+				<section class="formContainer" style="margin-top: 0px; height: 100%;">
+						<br><br>
+						<h3 style="font-family: gotham rounded book;">Repair Charge</h3>
+						<br><br>
+
+						<input type="number" placeholder="Repair Charge" name="repairCharge" required><br><br>
+						<input type="number" placeholder="Other Charge" name="otherCharge"><br><br>
+						<input type="submit" value="Update Repair Details"><br><br>
+					</form>
+				</section>
+			</section>
+		{% endif %}
+	</section>
+	<footer>
+		<p>Developed By : Jitendra Nirnejak (7869290297), Nishant Kumar Sahu (9407940408) and Aadarsh Gupta</p>
+	</footer>
+	<script type="text/javascript">
+		function addComponent(){
+			var component = document.getElementById('component').value;
+			var price = document.getElementById('price').value;
+			if(component != "" && price != ""){
+				document.getElementById('componentListStore').value += "~" + component + ":" + price;
+				document.getElementById('componentList').innerHTML += "<p>" + component + " Costing " + price + " is added.</p>";
+			}
+		}
+		function clearComponent(){
+			document.getElementById('componentListStore').value = "";
+			document.getElementById('componentList').innerHTML = "";
+
+			document.getElementById('component').value = "";
+			document.getElementById('price').value = "";
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Old Computer Depot</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	
+	{% load static %}
+	{% load staticfiles %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/receipt.css' %}">
+
+	<link rel="icon" type="image/x-icon" href="{% static 'img/logo.png' %}">
+</head>
+
+<body>
+	<header>
+		<h2>Old Computer Depot</h2>
+	</header>
+		<section class="content" style="background: url({% static 'img/bg.png' %}) no-repeat center; background-size: contain;">
+			<section class="formContainer" style="margin-top: 100px;">
+			<br>
+			<input type="button" value="Print" onclick="printDoc()">
+			<br><br>
+			<iframe src="../enquiryReceiptFrameContent?&receiptID={{ receiptID }}" id="receiptTable"  width="100%" height="700px" id="receiptTable" style="border: 0px;"></iframe>
+		</section>
+	<footer>
+		<p>Developed By : Jitendra Nirnejak (7869290297), Nishant Kumar Sahu (9407940408) and Aadarsh Gupta</p>
+	</footer>
+	<script type="text/javascript">
+		function printDoc(){
+		    document.getElementById('receiptTable').contentWindow.print();
+		}
+	</script>
+</body>
+
+</html>

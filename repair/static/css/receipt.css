@@ -1,0 +1,87 @@
+.table {
+	border: 2px black solid; 
+	display:flex; 
+
+	min-width: 100%; 
+	max-width: 100%; 
+	flex-wrap: wrap; 
+	flex-direction: column;
+
+	font-family : 'gotham rounded light';
+}
+
+.table > section{
+	border-bottom: 1px black solid;
+}
+
+.tableHeader {
+	display:flex;
+	flex-direction: row;
+
+	min-width: 100%;
+	max-width: 100%;
+}
+
+figure {
+	flex: 1; 
+
+	background: url('../img/logo.png'); 
+	background-size: cover; 
+	background-position: center;
+	background-repeat: no-repeat; 
+
+	min-height:115px;
+	max-height:115px;
+}
+
+.tableContactDetails {
+	padding: 5px;
+	font-size: 15px;
+
+	font-family: 'gotham rounded book';
+}
+
+.componentsTable {
+	margin: 20px;
+	margin-bottom: 0px;
+	margin-top: 5px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+
+	align-self: center;
+
+	min-width: 97%;
+	max-width: 97%;
+
+	border: 1.5px black solid;
+
+	font-family: 'gotham rounded book';
+}
+.componentsTable > section {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+
+	border-bottom: 1px black solid;
+}
+
+.componentsTable > section > section {
+	border-left: 1px black solid;
+}
+
+.componentsTableHeader, .componentsTableFooter {
+	font-family: 'gotham rounded medium';
+}
+
+.componentsTableFooter > section {
+	padding: 2px 0px 2px 0px;
+}
+
+@media print{
+	html, body {
+		transform: scale(0.95) translateY(-25px);
+		background: white;
+	}
+}

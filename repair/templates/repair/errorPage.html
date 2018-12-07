@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Old Computer Depot</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	
+	{% load static %}
+	{% load staticfiles %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+	<link rel="icon" type="image/x-icon" href="{% static 'img/logo.png' %}">
+	<style type="text/css">
+		.content {
+			justify-content: center;
+			align-items: center;
+			align-self: center;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<h2>Old Computer Depot</h2>
+	</header>
+		<section class="content" style="background: url({% static 'img/bg.png' %}) no-repeat center; background-size: contain;">
+			<section class="formContainer" style="margin-top: 0px;">
+				<br><br><br><br><br>
+				<h1>{{ errorMessage }}</h1>
+				{% if button %}
+					<br><br>
+					<input type="button" value="{{ buttonText }}" onclick="window.location.replace('{{ button }}')">
+				{% endif %}
+				<br><br><br><br><br>
+			</section>
+		</section>
+
+	<footer>
+		<p>Developed By : Jitendra Nirnejak (7869290297), Nishant Kumar Sahu (9407940408) and Aadarsh Gupta</p>
+	</footer>
+</body>
+
+</html>
